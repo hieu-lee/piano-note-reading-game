@@ -1,0 +1,120 @@
+.piano-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 0 4px;
+}
+
+.piano-keyboard {
+  position: relative;
+  height: 160px;
+  min-width: 700px;
+  user-select: none;
+}
+
+.piano-key {
+  position: absolute;
+  top: 0;
+  border-radius: 0 0 6px 6px;
+  cursor: pointer;
+  transition: background 0.08s, box-shadow 0.08s;
+  box-sizing: border-box;
+}
+
+.white-key {
+  height: 100%;
+  background: linear-gradient(to bottom, #fff 85%, #e8e8e8);
+  border: 1px solid #b0b0b0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.white-key:hover {
+  background: linear-gradient(to bottom, #f5f5ff 85%, #ddddf5);
+}
+
+.white-key:active {
+  background: linear-gradient(to bottom, #e0e0f0 85%, #d0d0e0);
+}
+
+.black-key {
+  height: 60%;
+  background: linear-gradient(to bottom, #333 0%, #111 100%);
+  border: 1px solid #000;
+  border-top: none;
+  z-index: 2;
+  border-radius: 0 0 4px 4px;
+}
+
+.black-key:hover {
+  background: linear-gradient(to bottom, #444 0%, #222 100%);
+}
+
+.black-key:active {
+  background: linear-gradient(to bottom, #555 0%, #333 100%);
+}
+
+.key-label {
+  font-size: 11px;
+  color: #999;
+  padding-bottom: 8px;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.feedback-correct {
+  animation: flashCorrect 0.5s ease-out;
+}
+
+.feedback-incorrect {
+  animation: flashIncorrect 0.5s ease-out;
+}
+
+.white-key.feedback-correct {
+  background: #4ade80 !important;
+}
+
+.black-key.feedback-correct {
+  background: #22c55e !important;
+}
+
+.white-key.feedback-incorrect {
+  background: #f87171 !important;
+  animation: flashIncorrect 0.5s ease-out, shake 0.3s ease-out;
+}
+
+.black-key.feedback-incorrect {
+  background: #ef4444 !important;
+  animation: flashIncorrect 0.5s ease-out, shake 0.3s ease-out;
+}
+
+.white-key.highlight {
+  background: #a78bfa !important;
+  border-color: #7c3aed !important;
+}
+
+.black-key.highlight {
+  background: #7c3aed !important;
+  border-color: #6d28d9 !important;
+}
+
+@keyframes flashCorrect {
+  0% { filter: brightness(1.5); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes flashIncorrect {
+  0% { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
