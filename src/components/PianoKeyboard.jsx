@@ -1,4 +1,5 @@
 import { ALL_PIANO_KEYS } from '../utils/constants.js';
+import { playNote } from '../utils/sound.js';
 import './PianoKeyboard.css';
 
 const BLACK_KEY_OFFSETS = {
@@ -47,7 +48,7 @@ export default function PianoKeyboard({ onKeyClick, feedbackKey, feedbackType, h
                   + (isHighlight ? ' highlight' : '')
                 }
                 style={{ left: `${wIdx * whiteKeyWidth}%`, width: `${whiteKeyWidth}%` }}
-                onClick={() => onKeyClick(key.note, key.octave)}
+                onClick={() => { playNote(key.note, key.octave); onKeyClick(key.note, key.octave); }}
               >
                 {key.note === 'C' && (
                   <span className="key-label">C{key.octave}</span>
@@ -69,7 +70,7 @@ export default function PianoKeyboard({ onKeyClick, feedbackKey, feedbackType, h
                   + (isHighlight ? ' highlight' : '')
                 }
                 style={{ left: `${leftPercent}%`, width: `${whiteKeyWidth * 0.65}%` }}
-                onClick={() => onKeyClick(key.note, key.octave)}
+                onClick={() => { playNote(key.note, key.octave); onKeyClick(key.note, key.octave); }}
               />
             );
           }
